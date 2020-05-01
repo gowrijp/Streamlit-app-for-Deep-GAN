@@ -6,4 +6,7 @@
 - In Navigator, click the Environments tab, then click the Create button. The Create new environment dialog box appears.
 - In the Environment name field, type a descriptive name for your environment.
 - In the Packages list select “Python” and in the Python version list select the version you want to use and click create.
-- Select open terminal from our activated env 
+- Select open terminal from our activated env   
+
+There’s one issue though : the TensorFlow session object can mutate internally as we use it to run different computations. Ordinarily, we don’t want cached objects to mutate, as that can lead to unexpected results. So when Streamlit detects such mutations, it issues a warning to the user. However, in this case we happen to know that it’s OK if the TensorFlow session object mutates, so we bypass the warning by setting allow_output_mutation=True
+
